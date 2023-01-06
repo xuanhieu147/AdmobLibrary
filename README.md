@@ -1,6 +1,5 @@
-# Admob Utils Library (Download example to copy code, README too long do not update)
+# Admob Library (Download example to copy code, README too long do not update)
 
-[![](https://jitpack.io/v/dktlib/AdmobUtilsLibrary.svg)](https://jitpack.io/#dktlib/AdmobUtilsLibrary)
 - Adding the library to your project:
 Add the following in your root build.gradle at the end of repositories:
 ```bash
@@ -14,7 +13,7 @@ allprojects {
 Implement library in your app level build.gradle:
 ```bash
 dependencies {
-    implementation 'com.github.dktlib:AdmobUtilsLibrary:{version}'
+    implementation 'com.github.xuanhieu147:AdmobLibrary:{version}'
 }
 ```
 ```bash
