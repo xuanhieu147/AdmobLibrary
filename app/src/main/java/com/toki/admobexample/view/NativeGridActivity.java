@@ -5,14 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ads.google.admobads.admobnative.GoogleNativeAdAdapter;
 import com.toki.admobexample.R;
-import com.toki.admobexample.adapter.ClickListener;
 import com.toki.admobexample.adapter.ItemModel;
-import com.toki.admobexample.adapter.MainAdapter;
 import com.toki.admobexample.adapter.SectionedGridRecyclerViewAdapter;
 import com.toki.admobexample.adapter.SimpleAdapter;
 

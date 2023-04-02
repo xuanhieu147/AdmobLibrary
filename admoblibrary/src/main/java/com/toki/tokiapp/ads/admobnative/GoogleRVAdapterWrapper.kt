@@ -1,4 +1,4 @@
-package com.ads.google.admobads.admobnative
+package com.toki.tokiapp.ads.admobnative
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

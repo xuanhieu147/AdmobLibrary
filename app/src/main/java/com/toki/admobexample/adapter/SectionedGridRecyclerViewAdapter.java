@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdValue;
+import com.google.android.gms.ads.nativead.NativeAd;
 import com.toki.tokiapp.ads.AdmodUtils;
 import com.toki.tokiapp.ads.NativeAdCallback;
 import com.toki.tokiapp.ads.admobnative.enumclass.GoogleENative;
@@ -105,12 +107,17 @@ public class SectionedGridRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder sectionViewHolder, int position) {
         if (isSectionHeaderPosition(position)) {
-            AdmodUtils.getInstance().loadNativeAdsWithLayout(
+            AdmodUtils.getInstance().loadAndShowNativeAdsWithLayout(
                     mContext,
                     admobid,
                     ((SectionViewHolder)sectionViewHolder).ads,
                     layoutCustom, GoogleENative.UNIFIED_MEDIUM,
                     new NativeAdCallback() {
+                        @Override
+                        public void onLoadedAndGetNativeAd(NativeAd ad) {
+
+                        }
+
                         @Override
                         public void onNativeAdLoaded() {
 
@@ -118,6 +125,11 @@ public class SectionedGridRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
                         @Override
                         public void onAdFail() {
+
+                        }
+
+                        @Override
+                        public void onAdPaid(AdValue adValue) {
 
                         }
                     });

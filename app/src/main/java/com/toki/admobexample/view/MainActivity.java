@@ -15,7 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.codemybrainsout.ratingdialog.MaybeLaterCallback;
 import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.gms.ads.AdValue;
+import com.google.android.gms.ads.nativead.NativeAd;
 import com.toki.admobexample.SplashActivity;
+import com.toki.admobexample.utilsdemp.AdsManager;
 import com.toki.admobexample.utilsdemp.UtilsDemoActivity;
 import com.toki.tokiapp.ads.AdCallbackNew;
 import com.toki.tokiapp.ads.AdLoadCallback;
@@ -72,62 +75,40 @@ public class MainActivity extends AppCompatActivity {
         btn_LoadInter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdmodUtils.getInstance().loadAdInterstitial(MainActivity.this, getString(R.string.test_ads_admob_inter_id), new AdLoadCallback() {
-                    @Override
-                    public void onAdLoaded() {
-
-                    }
-
-                    @Override
-                    public void onAdFail() {
-
-                    }
-                },false);
-
+                AdsManager.INSTANCE.loadInter(MainActivity.this, AdsManager.INSTANCE.getInterholder());
             }
         });
         btn_ShowInter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (AdmodUtils.getInstance().mInterstitialAd != null) {
-                    AdmodUtils.getInstance().showAdInterstitialWithCallback(AdmodUtils.getInstance().mInterstitialAd, MainActivity.this, new AdCallbackNew() {
+                    AdsManager.INSTANCE.showInter(MainActivity.this, AdsManager.INSTANCE.getInterholder(), new AdsManager.AdListener() {
+
+                        @Override
+                        public void onFailed() {
+                            Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
+                        }
+
                         @Override
                         public void onAdClosed() {
                             Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
                         }
+                    }, true);
 
-                        @Override
-                        public void onAdFail() {
-                            Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
-                        }
-
-                        @Override
-                        public void onEventClickAdClosed() {
-
-                        }
-
-                        @Override
-                        public void onAdShowed() {
-
-                        }
-                    });
-                } else {
-                    Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
-                }
             }
         });
         btn_LoadAndShowInter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdmodUtils.getInstance().loadAndShowAdInterstitialWithCallback(MainActivity.this, getString(R.string.test_ads_admob_inter_id), 0, new AdCallback() {
+                AdsManager.INSTANCE.showInter(MainActivity.this, AdsManager.INSTANCE.getInterholder(), new AdsManager.AdListener() {
+
                     @Override
-                    public void onAdClosed() {
+                    public void onFailed() {
                         Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
                     }
 
                     @Override
-                    public void onAdFail() {
-                        onAdClosed();
+                    public void onAdClosed() {
+                        Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
                     }
                 }, true);
             }
@@ -242,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
 //        AdmodUtils.getInstance().loadNativeAdsWithLayout(MainActivity.this, getString(R.string.test_ads_admob_native_id), nativeAds, R.layout.ad_unified_medium);
 
 
-        AdmodUtils.getInstance().loadNativeAds(MainActivity.this, getString(R.string.test_ads_admob_native_id), nativeAds, GoogleENative.UNIFIED_MEDIUM, new NativeAdCallback() {
+        AdmodUtils.getInstance().loadAndShowNativeAdsWithLayout(MainActivity.this, getString(R.string.test_ads_admob_native_id), nativeAds, R.layout.ad_template_medium, GoogleENative.UNIFIED_MEDIUM, new NativeAdCallback() {
             @Override
             public void onNativeAdLoaded() {
             }
@@ -251,8 +232,33 @@ public class MainActivity extends AppCompatActivity {
             public void onAdFail() {
 
             }
+
+            @Override
+            public void onAdPaid(AdValue adValue) {
+                Utils.getInstance().showMessenger(MainActivity.this, adValue.toString());
+            }
+
+            @Override
+            public void onLoadedAndGetNativeAd(NativeAd ad) {
+
+            }
         });
-        AdmodUtils.getInstance().loadAdBanner(MainActivity.this, getString(R.string.test_ads_admob_banner_id), banner);
+        AdmodUtils.getInstance().loadAdBanner(MainActivity.this, getString(R.string.test_ads_admob_banner_id), banner, new AdmodUtils.BannerCallBack() {
+            @Override
+            public void onLoad() {
+                Utils.getInstance().showMessenger(MainActivity.this, "onLoad");
+            }
+
+            @Override
+            public void onFailed() {
+                Utils.getInstance().showMessenger(MainActivity.this, "onFailed");
+            }
+
+            @Override
+            public void onPaid(AdValue adValue) {
+                Utils.getInstance().showMessenger(MainActivity.this, adValue.toString());
+            }
+        });
     }
 
     private void showDialogRate() {

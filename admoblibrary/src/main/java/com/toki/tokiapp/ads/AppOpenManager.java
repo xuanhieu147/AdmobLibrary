@@ -371,11 +371,11 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
         if (!isAppResumeEnabled) {
             return;
         } else {
-            if (AdmodUtils.getInstance().dialog != null && AdmodUtils.getInstance().dialog.getDialog() != null) {
-                if (AdmodUtils.getInstance().dialog.getDialog().isShowing()) {
-                    AdmodUtils.getInstance().dialog.dismiss();
-                }
-            }
+//            if (AdmodUtils.getInstance().dialog != null && AdmodUtils.getInstance().dialog.getDialog() != null) {
+//                if (AdmodUtils.getInstance().dialog.getDialog().isShowing()) {
+//                    AdmodUtils.getInstance().dialog.dismiss();
+//                }
+//            }
 
         }
 

@@ -14,11 +14,7 @@ public class OtherActivity extends AppCompatActivity {
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
-        if (AdmodUtils.getInstance().dialog != null && AdmodUtils.getInstance().dialog.getDialog() != null) {
-            if (AdmodUtils.getInstance().dialog.getDialog().isShowing()) {
-                AdmodUtils.getInstance().dialog.dismiss();
-            }
-        }
+
 
 
     }

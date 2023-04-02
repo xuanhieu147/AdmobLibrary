@@ -24,49 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         AppCompatButton btn_next = findViewById(R.id.btn_next);
-        AdmodUtils.getInstance().loadAndShowAdInterstitialWithCallbackMultiAds(this, "", "", "", new AdCallback() {
-            @Override
-            public void onAdClosed() {
-
-                Utils.getInstance().replaceActivity(SplashActivity.this, MainActivity.class);
-            }
-
-            @Override
-            public void onAdFail() {
-                Utils.getInstance().replaceActivity(SplashActivity.this, MainActivity.class);
-
-            }
-        },false);
-//        btn_next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AppOpenManager.getInstance().showAdIfAvailable(false);
-//                if(AdmodUtils.getInstance().mInterstitialAd != null) {
-//                    AdmodUtils.getInstance().showAdInterstitialWithCallbackNotLoad(AdmodUtils.getInstance().mInterstitialAd, SplashActivity.this, new AdCallbackNew() {
-//                        @Override
-//                        public void onAdClosed() {
-//                            Utils.getInstance().replaceActivity(SplashActivity.this, MainActivity.class);
-//                        }
-//
-//                        @Override
-//                        public void onAdFail() {
-//                            Utils.getInstance().replaceActivity(SplashActivity.this, MainActivity.class);
-//                        }
-//
-//                        @Override
-//                        public void onEventClickAdClosed() {
-//                            Log.e("===splash","onEventClickAdClosed");
-//                        }
-//
-//                        @Override
-//                        public void onAdShowed() {
-//                            Log.e("===splash","onAdShowed");
-//
-//                        }
-//                    });
-//                } else{
-//                    Utils.getInstance().replaceActivity(SplashActivity.this, MainActivity.class);
-//                }
+        Utils.getInstance().replaceActivity(SplashActivity.this, MainActivity.class);
             }
         }
 

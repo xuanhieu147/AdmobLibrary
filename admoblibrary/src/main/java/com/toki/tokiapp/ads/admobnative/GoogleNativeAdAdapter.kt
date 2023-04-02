@@ -1,4 +1,4 @@
-package com.ads.google.admobads.admobnative
+package com.toki.tokiapp.ads.admobnative
 
 import android.app.Activity
 import android.view.LayoutInflater
@@ -11,6 +11,8 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdValue
+import com.google.android.gms.ads.nativead.NativeAd
 import com.toki.tokiapp.R
 import com.toki.tokiapp.ads.AdmodUtils
 import com.toki.tokiapp.ads.NativeAdCallback
@@ -61,12 +63,19 @@ class GoogleNativeAdAdapter(private val mParam: Param) :
             } else {
                 idAdmob = mParam.idAdmob;
             }
-            AdmodUtils.getInstance().loadNativeAdsWithLayout(mParam.activity!!,
+            AdmodUtils.getInstance().loadAndShowNativeAdsWithLayout(mParam.activity,
                 idAdmob,
                 holder.adFrame,
                 mParam.layout, GoogleENative.UNIFIED_MEDIUM,object : NativeAdCallback {
+                    override fun onLoadedAndGetNativeAd(ad: NativeAd?) {
+
+                    }
+
                     override fun onNativeAdLoaded() {}
                     override fun onAdFail() {}
+                    override fun onAdPaid(adValue: AdValue?) {
+
+                    }
                 })
             adHolder.loaded = true
 
