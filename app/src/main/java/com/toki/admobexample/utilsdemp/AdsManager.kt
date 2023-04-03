@@ -2,15 +2,14 @@ package com.toki.admobexample.utilsdemp
 
 import android.app.Activity
 import android.content.Context
-import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.ads.AdValue
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.toki.tokiapp.ads.AdCallBackInterLoad
 import com.toki.tokiapp.ads.AdmodUtils
 import com.toki.tokiapp.ads.AdsInterCallBack
 import com.toki.tokiapp.utils.Utils
-import com.vapp.admoblibrary.ads.model.InterHolder
-import com.vapp.admoblibrary.ads.model.NativeHolder
+import com.toki.tokiapp.ads.model.InterHolder
+import com.toki.tokiapp.ads.model.NativeHolder
 
 object AdsManager {
 

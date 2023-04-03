@@ -3,12 +3,10 @@ package com.toki.tokiapp.ads;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -23,15 +21,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdValue;
 import com.google.android.gms.ads.OnPaidEventListener;
 import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
@@ -63,15 +58,14 @@ import com.toki.tokiapp.ads.admobnative.enumclass.GoogleENative;
 import com.toki.tokiapp.utils.DialogCallback;
 import com.toki.tokiapp.utils.DialogType;
 import com.toki.tokiapp.utils.Utils;
-import com.vapp.admoblibrary.ads.model.InterHolder;
-import com.vapp.admoblibrary.ads.model.NativeHolder;
+import com.toki.tokiapp.ads.model.InterHolder;
+import com.toki.tokiapp.ads.model.NativeHolder;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
