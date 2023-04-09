@@ -81,24 +81,6 @@ public class MainActivity extends AppCompatActivity {
         btn_ShowInter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    AdsManager.INSTANCE.showInter(MainActivity.this, AdsManager.INSTANCE.getInterholder(), new AdsManager.AdListener() {
-
-                        @Override
-                        public void onFailed() {
-                            Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
-                        }
-
-                        @Override
-                        public void onAdClosed() {
-                            Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
-                        }
-                    }, true);
-
-            }
-        });
-        btn_LoadAndShowInter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 AdsManager.INSTANCE.showInter(MainActivity.this, AdsManager.INSTANCE.getInterholder(), new AdsManager.AdListener() {
 
                     @Override
@@ -109,6 +91,40 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAdClosed() {
                         Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
+                    }
+                }, true);
+
+            }
+        });
+        btn_LoadAndShowInter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdmodUtils.getInstance().loadAndShowAdInterstitialWithCallback(MainActivity.this, "ca-app-pub-3940256099942544/1033173712", 0, new AdCallbackNew() {
+                    @Override
+                    public void onAdClosed() {
+                        AdmodUtils.getInstance().dismissAdDialog();
+                        Utils.getInstance().addActivity(MainActivity.this, OtherActivity.class);
+
+                    }
+
+                    @Override
+                    public void onEventClickAdClosed() {
+
+                    }
+
+                    @Override
+                    public void onAdShowed() {
+
+                    }
+
+                    @Override
+                    public void onAdLoaded() {
+
+                    }
+
+                    @Override
+                    public void onAdFail() {
+                        onAdClosed();
                     }
                 }, true);
             }
