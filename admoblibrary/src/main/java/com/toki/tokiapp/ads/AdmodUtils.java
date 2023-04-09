@@ -1263,7 +1263,7 @@ public class AdmodUtils {
                 if (AppOpenManager.getInstance().isInitialized()) {
                     AppOpenManager.getInstance().isAppResumeEnabled = true;
                 }
-                loadAndShowAdInterstitialWithCallback2(activity, finalAdmobId2, adCallback);
+//                loadAndShowAdInterstitialWithCallback2(activity, finalAdmobId2, adCallback);
             }
         });
 
@@ -1432,7 +1432,7 @@ public class AdmodUtils {
                 if (AdmodUtils.getInstance().isClick) {
                     interHolder.getMutable().setValue(null);
                 }
-                loadAndGetAdInterstitialId2(activity, idLoadInter2, adLoadCallback,  interHolder.getMutable());
+//                loadAndGetAdInterstitialId2(activity, idLoadInter2, adLoadCallback,  interHolder.getMutable());
             }
         });
     }
@@ -1491,7 +1491,7 @@ public class AdmodUtils {
         //check Ads Load
         if (interHolder.getCheck()) {
             if (enableLoadingDialog) {
-//                dialogLoading(activity);
+                dialogLoading(activity);
             }
             interHolder.getMutable().observe((LifecycleOwner) activity, aBoolean -> {
                 if (aBoolean != null) {
@@ -1556,7 +1556,7 @@ public class AdmodUtils {
             }
         } else {
             if (enableLoadingDialog) {
-//                dialogLoading(activity);
+                dialogLoading(activity);
             }
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 Log.d("===DelayLoad", "no-delay");
